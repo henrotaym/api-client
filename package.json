@@ -1,0 +1,27 @@
+{
+  "name": "@henrotaym/api-client",
+  "version": "1.0.1",
+  "description": "A simple api client.",
+  "main": "./src/index.js",
+  "exports": {
+    "./credentials": "./src/credentials/index.js",
+    "./exceptions": "./src/exceptions/index.js",
+    "./responses": "./src/responses/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henrotaym/api-client.git"
+  },
+  "author": "Henrotay Mathieu <mathieu.henrotay@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/henrotaym/api-client/issues"
+  },
+  "homepage": "https://github.com/henrotaym/api-client#readme",
+  "dependencies": {
+    "@henrotaym/helpers": "^1.0.0"
+  }
+}
