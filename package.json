@@ -1,6 +1,6 @@
 {
   "name": "@henrotaym/api-client",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple api client.",
   "main": "./src/index.js",
   "scripts": {
