@@ -3,13 +3,9 @@
   "version": "1.0.1",
   "description": "A simple api client.",
   "main": "./src/index.js",
-  "exports": {
-    "./credentials": "./src/credentials/index.js",
-    "./exceptions": "./src/exceptions/index.js",
-    "./responses": "./src/responses/index.js"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish src": "node scripts/publish.js && cd src && npm publish"
   },
   "repository": {
     "type": "git",
@@ -23,5 +19,8 @@
   "homepage": "https://github.com/henrotaym/api-client#readme",
   "dependencies": {
     "@henrotaym/helpers": "^1.0.0"
+  },
+  "devDependencies": {
+    "fs-extra": "^10.0.0"
   }
 }
