@@ -8,7 +8,8 @@ import {
 } from "./types/requests";
 
 /** Representing an API request. */
-class ApiRequest {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+class ApiRequest<R = any> {
   /** Request base url. */
   baseUrl: string;
 

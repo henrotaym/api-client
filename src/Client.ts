@@ -21,7 +21,7 @@ class Client {
   }
 
   /** Trying to make given request. */
-  async try<R>(request: ApiRequest) {
+  async try<R>(request: ApiRequest<R>) {
     if (this.credential) {
       this.credential.prepare(request);
     }
