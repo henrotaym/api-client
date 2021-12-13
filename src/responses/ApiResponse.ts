@@ -11,7 +11,6 @@ class ApiResponse<R> {
   /** Creating response from a fetch APi response. */
   constructor(fetch_response: Response) {
     this.fetch_response = fetch_response;
-    this.body = undefined;
   }
 
   /** Telling if response can be considered as success. */
@@ -38,9 +37,13 @@ class ApiResponse<R> {
     return this.body;
   }
 
-  /** Getting response body. */
+  /**
+   * Getting response body.
+   * Body was already retrieved automatically at this point by getBody
+   * @see getBody
+   */
   get() {
-    return this.body;
+    return this.body as null | R;
   }
 
   /** Transforming request to json. */

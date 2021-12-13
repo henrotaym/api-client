@@ -51,7 +51,7 @@ class TryGettingApiResponse<R> {
 
   /** Getting response body. */
   get() {
-    return this.response?.get();
+    return this.response ? this.response.get() : this.response;
   }
 
   /** Getting underlying response. */
