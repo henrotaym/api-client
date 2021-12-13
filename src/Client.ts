@@ -6,10 +6,10 @@ import ApiRequest from "./Request";
 /** Representing a client performing API requests. */
 class Client {
   /** Credential */
-  credential: Credential | null;
+  credential?: Credential;
 
   /** Instanciating client. */
-  constructor(credential: Credential | null) {
+  constructor(credential?: Credential) {
     this.credential = credential;
   }
 
