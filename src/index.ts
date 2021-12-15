@@ -1,8 +1,9 @@
 import Request from "./Request";
 import Client from "./Client";
+import { Credential, JsonCredential } from "./credentials";
 
-const apiClient = { Request, Client };
+const defaults = { Request, Client, Credential, JsonCredential };
 
-export { Request, Client };
+export { Request, Client, Credential, JsonCredential };
 
-export default apiClient;
+export default defaults;

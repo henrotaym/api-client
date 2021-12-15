@@ -19,8 +19,13 @@ class ApiResponse<R> {
   }
 
   /** Response status code. */
-  status() {
+  getStatus() {
     return this.fetch_response.status;
+  }
+
+  /** Telling if response status is same as given one. */
+  isStatus(status: number): boolean {
+    return this.getStatus() === status;
   }
 
   /** Setting and getting response body. */
@@ -50,7 +55,7 @@ class ApiResponse<R> {
   toJson() {
     return {
       ok: this.ok(),
-      status: this.status(),
+      status: this.getStatus(),
       body: this.get(),
     };
   }
