@@ -1,8 +1,9 @@
 import ApiRequest from "../Request";
 import ApiResponse from "../responses/ApiResponse";
+import TypescriptError from "./TypescriptError";
 
 /** Error happening when a request fails. */
-class RequestRelatedException<R> extends Error {
+class RequestRelatedException<R> extends TypescriptError {
   /** Related request. */
   request: ApiRequest | null;
 
