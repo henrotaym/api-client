@@ -8,7 +8,7 @@ export interface ApiRequestQuery {
 
 /** Request data. */
 export interface ApiRequestData {
-  [key: string]: ApiRequestData | null | boolean | string | number;
+  [key: string]: ApiRequestData | null | boolean | string | number | Array<any>;
 }
 
 /** Request headers. */
