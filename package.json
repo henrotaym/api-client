@@ -17,7 +17,8 @@
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags && npm publish",
-    "commit:all": "git add . && gitmoji -c"
+    "commit:all": "git add . && gitmoji -c",
+    "version:alpha": "npm version prerelease --preid=alpha"
   },
   "repository": {
     "type": "git",
