@@ -1,3 +1,4 @@
+import { toFormData } from "./helpers";
 import {
   ApiRequestAsJson,
   ApiRequestData,
@@ -31,6 +32,9 @@ class ApiRequest<R = any> {
   /** Request adding credentials cookies. */
   usingCredentials: boolean;
 
+  /** Telling if this request should be sent as form data. */
+  isForm: boolean;
+
   /** Initializing underlying parameters. */
   constructor() {
     this.baseUrl = "";
@@ -40,6 +44,7 @@ class ApiRequest<R = any> {
     this.query = {};
     this.headers = {};
     this.usingCredentials = false;
+    this.isForm = false;
   }
 
   /** Setting request verb. */
@@ -98,6 +103,11 @@ class ApiRequest<R = any> {
     return this;
   }
 
+  asForm(isForm: boolean): this {
+    this.isForm = isForm;
+    return this;
+  }
+
   /** Telling if request should add cookies. */
   withCredentials(isHavingCredentials: boolean): this {
     this.usingCredentials = isHavingCredentials;
@@ -136,7 +146,9 @@ class ApiRequest<R = any> {
     const params: ApiRequestToFetchParams = { method: this.verb };
 
     if (this.havingData()) {
-      params.body = JSON.stringify(this.data);
+      params.body = this.isForm
+        ? toFormData(this.data)
+        : JSON.stringify(this.data);
     }
 
     if (this.havingHeaders()) {

@@ -19,7 +19,7 @@ export interface ApiRequestHeaders {
 /** Request transformation to fecht API params. */
 export interface ApiRequestToFetchParams {
   method: ApiRequestVerb;
-  body?: string;
+  body?: string | FormData;
   headers?: ApiRequestHeaders;
   credentials?: "include";
 }
