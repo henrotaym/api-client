@@ -103,6 +103,7 @@ class ApiRequest<R = any> {
     return this;
   }
 
+  /** Setting request as form data. */
   asForm(isForm: boolean): this {
     this.isForm = isForm;
     return this;
