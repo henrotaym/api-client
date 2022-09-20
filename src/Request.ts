@@ -165,7 +165,8 @@ class ApiRequest<R = any> {
 
   /** Transforming to fetch API url. */
   getUrl(): string {
-    const shouldAddSlash = this.baseUrl.charAt(this.baseUrl.length - 1) !== "/";
+    const shouldAddSlash =
+      this.baseUrl.charAt(this.baseUrl.length - 1) !== "/" && this.url !== "/";
     const url = `${this.baseUrl}${shouldAddSlash ? "/" : ""}${this.url}`;
 
     if (!this.havingQuery()) {
