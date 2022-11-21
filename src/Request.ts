@@ -82,6 +82,22 @@ class ApiRequest<R = any> {
     return this;
   }
 
+  /** Appending to configured baseUrl.
+   * @param {string} append
+   * @returns {Request} */
+  appendToBaseUrl(append: string): this {
+    return this.setBaseUrl(`${this.baseUrl}/${append}`);
+  }
+
+  /**
+   * Setting authorization bearer token.
+   * @param {string} token
+   * @returns {Request}
+   */
+  setBearerToken(token: string): this {
+    return this.addHeaders({ Authorization: `Bearer ${token}` });
+  }
+
   /** Adding data to request. */
   addData(data: ApiRequestData): this {
     this.data = { ...this.data, ...data };
