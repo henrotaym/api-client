@@ -7,8 +7,10 @@ abstract class Credential {
   abstract prepare(request: ApiRequest): void;
 
   /** Used to perform action on a request before sending it. */
-  beforeSending(callback: (request: ApiRequest) => void): void {
+  beforeSending(callback: (request: ApiRequest) => void): this {
     this.beforeSendingCallbacks.push(callback);
+
+    return this;
   }
 
   /** Processing configured before sending callbacks. */
