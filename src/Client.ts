@@ -24,6 +24,7 @@ class Client {
   async try<R>(request: ApiRequest<R>) {
     if (this.credential) {
       this.credential.prepare(request);
+      this.credential.fireBeforeSendingCallbacks(request);
     }
 
     const response = new TryGettingApiResponse<R>();
