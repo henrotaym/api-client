@@ -35,6 +35,9 @@ class ApiRequest<R = any> {
   /** Telling if this request should be sent as form data. */
   isForm: boolean;
 
+  /** Telling if request is running in laravel environment. */
+  isUsingLaravel: boolean;
+
   /** Initializing underlying parameters. */
   constructor() {
     this.baseUrl = "";
@@ -45,6 +48,7 @@ class ApiRequest<R = any> {
     this.headers = {};
     this.usingCredentials = false;
     this.isForm = false;
+    this.isUsingLaravel = true;
   }
 
   /** Setting request verb. */
@@ -125,6 +129,11 @@ class ApiRequest<R = any> {
     return this;
   }
 
+  usingLaravel(isUsingLaravel: boolean): this {
+    this.isUsingLaravel = isUsingLaravel;
+    return this;
+  }
+
   /** Telling if request should add cookies. */
   withCredentials(isHavingCredentials: boolean): this {
     this.usingCredentials = isHavingCredentials;
@@ -160,6 +169,7 @@ class ApiRequest<R = any> {
 
   /** Transforming request to fetch API requests parameters. */
   toFetchParams(): ApiRequestToFetchParams {
+    this.prepareForFetch();
     const params: ApiRequestToFetchParams = { method: this.verb };
 
     if (this.havingData()) {
@@ -177,6 +187,14 @@ class ApiRequest<R = any> {
     }
 
     return params;
+  }
+
+  private prepareForFetch(): void {
+    if (!this.isForm) return;
+    if (!this.isUsingLaravel) return;
+    if (this.verb !== "PUT" && this.verb !== "PATCH") return;
+    this.addData({ _method: this.verb });
+    this.setVerb("POST");
   }
 
   /** Transforming to fetch API url. */
@@ -203,6 +221,7 @@ class ApiRequest<R = any> {
       headers: this.headers,
       data: this.data,
       usingCredentials: this.usingCredentials,
+      isUsingLaravel: this.isUsingLaravel,
     };
   }
 }

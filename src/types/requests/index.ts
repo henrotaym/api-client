@@ -34,4 +34,5 @@ export interface ApiRequestAsJson {
   headers: ApiRequestHeaders;
   data: ApiRequestData;
   usingCredentials: boolean;
+  isUsingLaravel: boolean;
 }
