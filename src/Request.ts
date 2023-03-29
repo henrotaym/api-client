@@ -1,4 +1,4 @@
-import { toFormData } from "./helpers";
+import { toFormData, toQuery } from "./helpers";
 import {
   ApiRequestAsJson,
   ApiRequestData,
@@ -207,7 +207,7 @@ class ApiRequest<R = any> {
       return url;
     }
 
-    return `${url}?${new URLSearchParams(this.query).toString()}`;
+    return `${url}?${new URLSearchParams(toQuery(this.query)).toString()}`;
   }
 
   /** Transforming request to json. */

@@ -3,7 +3,13 @@ export type ApiRequestVerb = "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
 
 /** Request query. */
 export interface ApiRequestQuery {
-  [key: string]: string;
+  [key: string]:
+    | ApiRequestQuery
+    | null
+    | boolean
+    | string
+    | number
+    | Array<any>;
 }
 
 /** Request data. */
