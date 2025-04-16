@@ -14,8 +14,10 @@ abstract class Credential {
   }
 
   /** Processing configured before sending callbacks. */
-  fireBeforeSendingCallbacks(request: ApiRequest) {
-    this.beforeSendingCallbacks.forEach((callback) => callback(request));
+  async fireBeforeSendingCallbacks(request: ApiRequest) {
+    return Promise.all(
+      this.beforeSendingCallbacks.map((callback) => callback(request))
+    );
   }
 }
 
